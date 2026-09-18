@@ -1,0 +1,4 @@
+# The test harness symlinks the repo root in here at runtime (see ../yazi).
+# It must not be tracked: `ya pkg` resolves git symlinks to files when
+# deploying, and a symlink to a directory aborts the deploy.
+bunny.yazi

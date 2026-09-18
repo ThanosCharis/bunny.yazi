@@ -1,6 +1,10 @@
 #!/bin/bash
 #/* vim: set filetype=bash : */
 
+# Expose the repo root as a plugin to the test config without tracking a
+# symlink to a directory in git (that breaks `ya pkg` deploys for consumers).
+ln -sfn ../.. "$(dirname "$0")/plugins/bunny.yazi"
+
 env "YAZI_CONFIG_HOME=$(pwd)" "YAZI_LOG=debug" yazi "$@"
 
 bat ~/.local/state/yazi/yazi.log || cat ~/.local/state/yazi/yazi.log
